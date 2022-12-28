@@ -2,55 +2,27 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title>Wikipedia</title>
-	<style>
-		body{
-			font-family:"游ゴシック", "Yu Gothic", YuGothic, sans-serif;
-          	background: linear-gradient(-45deg, #fdcbf1, #e6dee9);
-          	background-size: 200% 200%;
-          	animation: GradientBackground 10s ease infinite;
-        }
-        
-        .btn-circle-kirby {
-  			display: inline-block;
- 			text-decoration: none;
-  			color: #f9a9ae;
-  			width: 45px;
-  			height: 45px;
-  			line-height: 30px;
-  			border-radius: 50%;
-  			text-align: center;
-  			overflow: hidden;
-  			font-weight: bold;
-  			background-image: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
-  			text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
-		}
-
-		.btn-circle-kirby:active {
-  			background-image: linear-gradient(#fed6e3 0%, #ffcfcf 100%);
-		}
-		
-		@keyframes GradientBackground {
-          0% {
-            background-position: 0% 50%;
-          }
-
-          50% {
-            background-position: 100% 50%;
-          }
-
-          100% {
-            background-position: 0% 50%;
-          }
-        };
-        
-	</style>
+	<title>アニメ情報サイト</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
-	<form action="/" method="get">
-		<input type="text" name="keyword">
-		<input class="btn-circle-kirby" type="submit" value="検索">
+<body class="p-5">
+	<form action="/" method="get" class="row g-2 d-flex justify-content-center">
+		<div class="col-auto">
+			<input class="form-control" type="text" name="keyword">
+		</div>
+		<div class="col-auto">
+			<input class="btn btn-primary mb-3" type="submit" value="検索">
+		</div>
 	</form>
-<%=  @result %>
+	<div class="row d-flex justify-content-center">
+		<% @result.each do |res| %>
+			<div class="card col-lg-2 m-1" >
+				<div class="card-body">
+					<p class="my-1"><%= res %></p>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
