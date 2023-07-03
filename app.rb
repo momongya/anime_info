@@ -6,10 +6,10 @@ require 'net/http'
 require 'uri'
 
 def call_api
-    base_url = 'http://api.moemoe.tokyo/anime/v1/master/' + Date.today.year.to_s + '/' + Date.today.month.div(3).to_s
+    base_url = 'https://api.moemoe.tokyo/anime/v1/master/' + Date.today.year.to_s + '/' + Date.today.month.div(3).to_s
     url = URI.parse(base_url)
     returned_json = Net::HTTP.get(url).force_encoding("utf-8")
-    hash_data = JSON.parse(returned_json)  # RubyのHashに変換している
+    hash_data = JSON.parse(returned_json)
     return hash_data
 end
 
